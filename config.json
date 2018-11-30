@@ -1,0 +1,16 @@
+{
+	"name": "Hide Randomization Values",
+	"namespace": "Vanderbilt\\HideRandomizationValues",
+	"authors": [
+		{
+			"name": "Mark McEver",
+			"email": "datacore@vumc.org",
+			"institution": "Vanderbilt University Medical Center"
+		}
+	],
+	"description": "Hides the values assigned by the randomization (internal) module, on both the randomization dialog and the data entry form.",
+	"permissions": [
+		"redcap_every_page_before_render",
+		"redcap_data_entry_form_top"
+	]
+}
