@@ -33,6 +33,7 @@ class HideRandomizationValues extends \ExternalModules\AbstractExternalModule{
 		?>
 		<style>
 			#form #<?=$field?>-tr td.data input,
+			#form #<?=$field?>-tr td.data select,
 			#form #<?=$field?>-tr td.data label{
 				display: none;
 			}
