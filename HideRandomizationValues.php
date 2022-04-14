@@ -21,7 +21,7 @@ class HideRandomizationValues extends \ExternalModules\AbstractExternalModule{
 	}
 
 	function redcap_data_entry_form_top($project_id){
-		$results = $this->query("select target_field from redcap_randomization where project_id = $project_id");
+		$results = $this->query("select target_field from redcap_randomization where project_id = ?", [$project_id]);
 		$row = $results->fetch_assoc();
 		$field = @$row['target_field'];
 
