@@ -20,6 +20,40 @@ class HideRandomizationValues extends \ExternalModules\AbstractExternalModule{
 		}
 	}
 
+    function redcap_every_page_top($project_id) {
+        if(strpos($_SERVER['REQUEST_URI'],'/DataExport/index.php') !== false) {
+            if (isset($_GET['report_id'])) {
+                if ($_GET['report_id'] == "ALL") {
+                    $redirectURL = APP_PATH_WEBROOT_FULL. "redcap_v" .REDCAP_VERSION."/DataExport/index.php?pid=".$project_id;
+                    ?>
+                    <script>
+                        window.location = '<?php echo $redirectURL; ?>';
+                    </script>
+                    <?php
+                }
+            }
+            else {
+                ?>
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        waitForElementToRemove();
+                    });
+                    function waitForElementToRemove() {
+                        var target = $('table#table-report_list tr#reprow_ALL')[0];
+                        if(!target) {
+                            //The node we need does not exist yet.
+                            //Wait 500ms and try again
+                            window.setTimeout(waitForElementToRemove,10);
+                            return;
+                        }
+                        $('table#table-report_list tr#reprow_ALL').remove();
+                    }
+                </script>
+                <?php
+            }
+        }
+    }
+
 	function redcap_data_entry_form_top($project_id){
 		$results = $this->query("select target_field from redcap_randomization where project_id = ?", [$project_id]);
 		$row = $results->fetch_assoc();
