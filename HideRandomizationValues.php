@@ -66,15 +66,21 @@ class HideRandomizationValues extends \ExternalModules\AbstractExternalModule{
 
 		?>
 		<style>
-			#form #<?=$field?>-tr td.data input,
-			#form #<?=$field?>-tr td.data select,
-			#form #<?=$field?>-tr td.data label{
-				display: none;
-			}
+			#form #<?=$field?>-tr
+			{
+				td.data, /* desktop */
+				span[data-kind=field-value] /* mobile */ {
+					input,
+					select,
+					label{
+						display: none;
+					}
+				} 
 
-			#form #<?=$field?>-tr a{
-				/* We use 'visibility' instead of 'display' here so that the row remains the same height. */
-				visibility: hidden;
+				a{
+					/* We use 'visibility' instead of 'display' here so that the row remains the same height. */
+					visibility: hidden;
+				}
 			}
 		</style>
 		<?php
