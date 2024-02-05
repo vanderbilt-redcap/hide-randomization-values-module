@@ -64,6 +64,8 @@ class HideRandomizationValues extends \ExternalModules\AbstractExternalModule{
 			return;
 		}
 
+		$field = htmlspecialchars($field, ENT_QUOTES);
+
 		?>
 		<style>
 			#form #<?=$field?>-tr
