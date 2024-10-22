@@ -7,12 +7,12 @@ class HideRandomizationValues extends \ExternalModules\AbstractExternalModule{
 			// The randomization results dialog is being displayed.  Modify it and hide the randomization value.
 			?>
 			<style>
-				#randomizeDialog > .darkgreen td:first-child::after{
+				div.randomizeDialog > .darkgreen td:first-child::after{
 					padding-left: 25px;
 					content: 'The current record was successfully randomized.';
 				}
 
-				#randomizeDialog > .darkgreen td:last-child{
+				div.randomizeDialog > .darkgreen td:last-child{
 					display: none;
 				}
 			</style>
